@@ -1,13 +1,13 @@
 import os
 import cv2
 import matplotlib.pyplot as plt
-import matplotlib.image as mp_img
 import numpy as np
 import sys
 import math
 from scipy.ndimage import gaussian_filter, median_filter, sobel,gaussian_laplace
 from skimage.util import random_noise
 import scipy.misc
+from mpl_toolkits.mplot3d import Axes3D
 
 
 
@@ -119,3 +119,8 @@ def convolve2D(image, filter_kernel):#, padding=0, strides=1):s
             
 
     return output_image
+
+
+def plot_helper(x, y, sigma):
+    temp = (x ** 2 + y ** 2) / (2 * sigma ** 2)
+    return -1 / (np.pi * sigma ** 4) * (1 - temp) * np.exp(-temp)
